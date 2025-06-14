@@ -1,0 +1,218 @@
+Starting LSTM Stock Prediction Model...
+
+=== Step 1: Data Collection ===
+Attempting to fetch AAPL data for 10y...
+AAPL: No data found for this date range, symbol may be delisted
+No data returned from yfinance - falling back to sample data
+Generating comprehensive sample stock data...
+Dataset shape: (2560, 10)
+Date range: 2014-03-11 00:00:00 to 2024-01-01 00:00:00
+Close price range: $121.50 - $802.46
+
+=== Step 2: Data Preparation ===
+Training samples: 2000
+Validation samples: 250
+Test samples: 250
+
+=== Step 3: Hyperparameter Search ===
+Starting hyperparameter grid search...
+Testing combination 1/3: {'batch_size': 32, 'lstm_units': [50, 50], 'dropout_rate': 0.2, 'sequence_length': 60}
+2025-06-14 22:48:13.289091: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE SSE2 SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Model built with 32,901 parameters
+Validation loss: 0.000188, Time: 17.94s
+Testing combination 2/3: {'batch_size': 64, 'lstm_units': [64, 32], 'dropout_rate': 0.1, 'sequence_length': 30}
+Training samples: 2024
+Validation samples: 253
+Test samples: 253
+Model built with 31,443 parameters
+Validation loss: 0.000230, Time: 7.41s
+Testing combination 3/3: {'batch_size': 16, 'lstm_units': [32, 32], 'dropout_rate': 0.3, 'sequence_length': 90}
+Training samples: 1976
+Validation samples: 247
+Test samples: 247
+Model built with 14,163 parameters
+Validation loss: 0.000265, Time: 33.72s
+Best parameters: {'batch_size': 32, 'lstm_units': [50, 50], 'dropout_rate': 0.2, 'sequence_length': 60}
+Best validation loss: 0.000188
+
+=== Step 4: Model Training ===
+Training optimized LSTM model...
+Training samples: 2000
+Validation samples: 250
+Test samples: 250
+Model built with 32,901 parameters
+Epoch 1/50
+63/63 [==============================] - 5s 31ms/step - loss: 0.0157 - mae: 0.0829 - val_loss: 5.2443e-04 - val_mae: 0.0189 - lr: 0.0010
+Epoch 2/50
+63/63 [==============================] - 2s 25ms/step - loss: 0.0033 - mae: 0.0424 - val_loss: 2.8219e-04 - val_mae: 0.0135 - lr: 0.0010
+Epoch 3/50
+63/63 [==============================] - 2s 25ms/step - loss: 0.0027 - mae: 0.0378 - val_loss: 6.5094e-04 - val_mae: 0.0210 - lr: 0.0010
+Epoch 4/50
+63/63 [==============================] - 2s 25ms/step - loss: 0.0024 - mae: 0.0358 - val_loss: 4.5780e-04 - val_mae: 0.0171 - lr: 0.0010
+Epoch 5/50
+63/63 [==============================] - 2s 26ms/step - loss: 0.0026 - mae: 0.0365 - val_loss: 2.0378e-04 - val_mae: 0.0115 - lr: 0.0010
+Epoch 6/50
+63/63 [==============================] - 2s 25ms/step - loss: 0.0020 - mae: 0.0320 - val_loss: 2.7053e-04 - val_mae: 0.0132 - lr: 0.0010
+Epoch 7/50
+63/63 [==============================] - 2s 25ms/step - loss: 0.0020 - mae: 0.0327 - val_loss: 3.5232e-04 - val_mae: 0.0154 - lr: 0.0010
+Epoch 8/50
+63/63 [==============================] - 2s 25ms/step - loss: 0.0018 - mae: 0.0312 - val_loss: 5.2909e-04 - val_mae: 0.0190 - lr: 0.0010
+Epoch 9/50
+63/63 [==============================] - 2s 25ms/step - loss: 0.0019 - mae: 0.0315 - val_loss: 6.0357e-04 - val_mae: 0.0206 - lr: 0.0010
+Epoch 10/50
+63/63 [==============================] - 2s 26ms/step - loss: 0.0018 - mae: 0.0307 - val_loss: 3.4158e-04 - val_mae: 0.0147 - lr: 0.0010
+Epoch 11/50
+63/63 [==============================] - 2s 25ms/step - loss: 0.0016 - mae: 0.0292 - val_loss: 2.2748e-04 - val_mae: 0.0119 - lr: 0.0010
+Epoch 12/50
+63/63 [==============================] - 1s 24ms/step - loss: 0.0016 - mae: 0.0290 - val_loss: 2.1717e-04 - val_mae: 0.0116 - lr: 0.0010
+Epoch 13/50
+63/63 [==============================] - 1s 23ms/step - loss: 0.0014 - mae: 0.0277 - val_loss: 2.0148e-04 - val_mae: 0.0112 - lr: 2.0000e-04
+Epoch 14/50
+63/63 [==============================] - 1s 23ms/step - loss: 0.0014 - mae: 0.0274 - val_loss: 2.0227e-04 - val_mae: 0.0112 - lr: 2.0000e-04
+Epoch 15/50
+63/63 [==============================] - 1s 23ms/step - loss: 0.0014 - mae: 0.0269 - val_loss: 2.4941e-04 - val_mae: 0.0125 - lr: 2.0000e-04
+Epoch 16/50
+63/63 [==============================] - 1s 24ms/step - loss: 0.0014 - mae: 0.0270 - val_loss: 2.2624e-04 - val_mae: 0.0117 - lr: 2.0000e-04
+Epoch 17/50
+63/63 [==============================] - 2s 24ms/step - loss: 0.0013 - mae: 0.0263 - val_loss: 2.0918e-04 - val_mae: 0.0113 - lr: 2.0000e-04
+Epoch 18/50
+63/63 [==============================] - 2s 24ms/step - loss: 0.0013 - mae: 0.0266 - val_loss: 2.1152e-04 - val_mae: 0.0113 - lr: 2.0000e-04
+Epoch 19/50
+63/63 [==============================] - 2s 25ms/step - loss: 0.0013 - mae: 0.0264 - val_loss: 2.9763e-04 - val_mae: 0.0137 - lr: 2.0000e-04
+Epoch 20/50
+63/63 [==============================] - 2s 24ms/step - loss: 0.0012 - mae: 0.0262 - val_loss: 1.9097e-04 - val_mae: 0.0108 - lr: 2.0000e-04
+Epoch 21/50
+63/63 [==============================] - 2s 24ms/step - loss: 0.0013 - mae: 0.0263 - val_loss: 1.9330e-04 - val_mae: 0.0108 - lr: 2.0000e-04
+Epoch 22/50
+63/63 [==============================] - 2s 24ms/step - loss: 0.0014 - mae: 0.0274 - val_loss: 1.6665e-04 - val_mae: 0.0103 - lr: 2.0000e-04
+Epoch 23/50
+63/63 [==============================] - 2s 25ms/step - loss: 0.0012 - mae: 0.0254 - val_loss: 1.7893e-04 - val_mae: 0.0105 - lr: 2.0000e-04
+Epoch 24/50
+63/63 [==============================] - 2s 27ms/step - loss: 0.0012 - mae: 0.0260 - val_loss: 1.7762e-04 - val_mae: 0.0105 - lr: 2.0000e-04
+Epoch 25/50
+63/63 [==============================] - 2s 26ms/step - loss: 0.0013 - mae: 0.0263 - val_loss: 3.1603e-04 - val_mae: 0.0140 - lr: 2.0000e-04
+Epoch 26/50
+63/63 [==============================] - 2s 26ms/step - loss: 0.0012 - mae: 0.0258 - val_loss: 2.0421e-04 - val_mae: 0.0111 - lr: 2.0000e-04
+Epoch 27/50
+63/63 [==============================] - 2s 28ms/step - loss: 0.0012 - mae: 0.0260 - val_loss: 3.1623e-04 - val_mae: 0.0140 - lr: 2.0000e-04
+Epoch 28/50
+63/63 [==============================] - 2s 27ms/step - loss: 0.0012 - mae: 0.0261 - val_loss: 1.8812e-04 - val_mae: 0.0107 - lr: 2.0000e-04
+Epoch 29/50
+63/63 [==============================] - 2s 24ms/step - loss: 0.0012 - mae: 0.0252 - val_loss: 1.7929e-04 - val_mae: 0.0104 - lr: 2.0000e-04
+Epoch 30/50
+63/63 [==============================] - 1s 23ms/step - loss: 0.0012 - mae: 0.0260 - val_loss: 2.1209e-04 - val_mae: 0.0112 - lr: 2.0000e-04
+Epoch 31/50
+63/63 [==============================] - 1s 23ms/step - loss: 0.0012 - mae: 0.0255 - val_loss: 2.7302e-04 - val_mae: 0.0128 - lr: 2.0000e-04
+Epoch 32/50
+63/63 [==============================] - 1s 24ms/step - loss: 0.0012 - mae: 0.0256 - val_loss: 1.6577e-04 - val_mae: 0.0103 - lr: 2.0000e-04
+Epoch 33/50
+63/63 [==============================] - 1s 23ms/step - loss: 0.0011 - mae: 0.0245 - val_loss: 2.3256e-04 - val_mae: 0.0118 - lr: 1.0000e-04
+Epoch 34/50
+63/63 [==============================] - 1s 23ms/step - loss: 0.0011 - mae: 0.0249 - val_loss: 1.9106e-04 - val_mae: 0.0106 - lr: 1.0000e-04
+Epoch 35/50
+63/63 [==============================] - 1s 23ms/step - loss: 0.0011 - mae: 0.0243 - val_loss: 1.7386e-04 - val_mae: 0.0102 - lr: 1.0000e-04
+Epoch 36/50
+63/63 [==============================] - 1s 24ms/step - loss: 0.0011 - mae: 0.0245 - val_loss: 1.9296e-04 - val_mae: 0.0107 - lr: 1.0000e-04
+Epoch 37/50
+63/63 [==============================] - 1s 23ms/step - loss: 0.0011 - mae: 0.0251 - val_loss: 1.7046e-04 - val_mae: 0.0102 - lr: 1.0000e-04
+Epoch 38/50
+63/63 [==============================] - 1s 24ms/step - loss: 0.0011 - mae: 0.0250 - val_loss: 2.2994e-04 - val_mae: 0.0117 - lr: 1.0000e-04
+Epoch 39/50
+63/63 [==============================] - 1s 23ms/step - loss: 0.0011 - mae: 0.0244 - val_loss: 2.0049e-04 - val_mae: 0.0109 - lr: 1.0000e-04
+Epoch 40/50
+63/63 [==============================] - 2s 24ms/step - loss: 0.0011 - mae: 0.0250 - val_loss: 1.6968e-04 - val_mae: 0.0104 - lr: 1.0000e-04
+Epoch 41/50
+63/63 [==============================] - 2s 24ms/step - loss: 0.0011 - mae: 0.0250 - val_loss: 1.7913e-04 - val_mae: 0.0103 - lr: 1.0000e-04
+Epoch 42/50
+63/63 [==============================] - 1s 23ms/step - loss: 0.0011 - mae: 0.0244 - val_loss: 1.8504e-04 - val_mae: 0.0105 - lr: 1.0000e-04
+Epoch 43/50
+63/63 [==============================] - 1s 23ms/step - loss: 0.0011 - mae: 0.0243 - val_loss: 1.6140e-04 - val_mae: 0.0099 - lr: 1.0000e-04
+Epoch 44/50
+63/63 [==============================] - 1s 24ms/step - loss: 0.0011 - mae: 0.0248 - val_loss: 1.5571e-04 - val_mae: 0.0098 - lr: 1.0000e-04
+Epoch 45/50
+63/63 [==============================] - 1s 24ms/step - loss: 0.0011 - mae: 0.0249 - val_loss: 2.1936e-04 - val_mae: 0.0116 - lr: 1.0000e-04
+Epoch 46/50
+63/63 [==============================] - 1s 23ms/step - loss: 0.0011 - mae: 0.0248 - val_loss: 1.8712e-04 - val_mae: 0.0104 - lr: 1.0000e-04
+Epoch 47/50
+63/63 [==============================] - 1s 24ms/step - loss: 0.0010 - mae: 0.0243 - val_loss: 2.1438e-04 - val_mae: 0.0113 - lr: 1.0000e-04
+Epoch 48/50
+63/63 [==============================] - 1s 24ms/step - loss: 0.0010 - mae: 0.0237 - val_loss: 1.6356e-04 - val_mae: 0.0099 - lr: 1.0000e-04
+Epoch 49/50
+63/63 [==============================] - 2s 25ms/step - loss: 0.0011 - mae: 0.0247 - val_loss: 1.5425e-04 - val_mae: 0.0097 - lr: 1.0000e-04
+Epoch 50/50
+63/63 [==============================] - 2s 26ms/step - loss: 0.0011 - mae: 0.0246 - val_loss: 1.5893e-04 - val_mae: 0.0098 - lr: 1.0000e-04
+Training completed in 80.60 seconds
+
+=== Step 5: Model Evaluation ===
+Evaluating model performance...
+63/63 [==============================] - 1s 9ms/step
+8/8 [==============================] - 0s 8ms/step
+8/8 [==============================] - 0s 8ms/step
+Model evaluation completed.
+Test R² Score: 0.7515
+Test MAE: $5.27
+
+=== Step 6: ARIMA Comparison ===
+Comparing with ARIMA baseline...
+ARIMA comparison completed.
+
+=== Step 7: Results Visualization ===
+
+=== Step 8: Final Report ===
+
+        ================================
+        LSTM STOCK PREDICTION MODEL REPORT
+        ================================
+
+        Dataset Information:
+        - Symbol: AAPL
+        - Total Records: 2,560
+        - Date Range: 2014-03-11 to 2024-01-01
+        - Features Used: Close, Volume, MA_20, MA_50, RSI, Volatility
+        - Close Price Range: $121.50 - $802.46
+
+        Model Architecture:
+        - Sequence Length: 60
+        - LSTM Layers: 2
+        - Dense Layers: 2
+        - Total Parameters: 32,901
+
+        Training Details:
+        - Training Time: 80.60 seconds
+        - Epochs Completed: 50
+        - Best Validation Loss: 0.000154
+
+        Performance Metrics:
+        - Train R²: 0.993097
+        - Validation R²: 0.931525
+        - Test R²: 0.751487
+        - Test MSE: 43.240928
+        - Test MAE: $5.27
+
+        Data Split:
+        - Training samples: 2,000
+        - Validation samples: 250
+        - Test samples: 250
+
+        Hyperparameter Search Results:
+        - Best Parameters: {'batch_size': 32, 'lstm_units': [50, 50], 'dropout_rate': 0.2, 'sequence_length': 60}
+        - Number of combinations tested: 3
+
+        ARIMA Comparison:
+        - LSTM R²: 0.751487
+        - ARIMA R²: -10.287624
+        - LSTM MSE: 43.240928
+        - ARIMA MSE: 9690.365515
+        - LSTM Outperforms ARIMA (R²): True
+        - LSTM Outperforms ARIMA (MSE): True
+
+
+==================================================
+LSTM Stock Prediction Model completed successfully!
+Total dataset size: 2,560 records
+Model achieved R² score of 0.7515 on test set
+✅ Excellent model performance (R² > 0.7)
+Average prediction error: $5.27
+
+Script execution completed.
